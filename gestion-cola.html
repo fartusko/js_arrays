@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrador de Lista de Nombres</title>
+</head>
+<body>
+<h1>Administrador de Lista de Nombres</h1>
+
+<input type="text" id="input-nombre" placeholder="Nombre">
+<button onclick="agregarNombre()">Añadir Nombre</button>
+<button onclick="eliminarPrimerNombre()">Eliminar Primer Nombre</button>
+<button onclick="mostrarLista()">Mostrar Lista</button>
+
+<ul id="lista-nombres"></ul>
+
+<script>
+    var nombres = []; // Array para almacenar los nombres
+
+    // Función para agregar un nombre al final de la lista
+    function agregarNombre() {
+        var nombre = document.getElementById("input-nombre").value;
+        nombres.push(nombre);
+        document.getElementById("input-nombre").value = ""; // Limpiar el campo de entrada
+    }
+
+    // Función para eliminar el primer nombre de la lista
+    function eliminarPrimerNombre() {
+        if (nombres.length > 0) {
+            $n= nombres.shift(); // Elimina el primer elemento del array
+            window.alert(" se borro a "+ $n)
+            mostrarLista();
+        }
+    }
+
+    // Función para mostrar la lista de nombres en una lista HTML
+    function mostrarLista() {
+        var lista = document.getElementById("lista-nombres");
+        lista.innerHTML = ""; // Limpiar la lista antes de mostrar los nombres
+        nombres.forEach(function(nombre) {
+            var li = document.createElement("li");
+            li.textContent = nombre;
+            lista.appendChild(li);
+        });
+    }
+</script>
+</body>
+</html>
